@@ -1,4 +1,7 @@
-//------------scss variables-----------------------------
+//------------------------
+// all styles are in top-down order
+//------------------------
+//------------ variables-----------------------------
 $helvetica: font151473;
 $helvetica-light: font151466;
 $primary: #0067b3;
@@ -8,9 +11,10 @@ $text-color: #fff;
 $overlay: rgba(0, 0, 0, .6);
 $fontsize: 1.4rem;
 $custshade: #eceef1;
+$fontstack: $helvetica, 'Helvetica', 'Open Sans', sans-serif;
 
-//---------------------------------------------------------
 
+//----------------- bootstrap overrides / universal styles -------------
 #override .container-fluid {
   margin: 0;
   padding: 0;
@@ -20,23 +24,28 @@ a:hover {
   text-decoration: none;
 }
 
-
 body,
 html {
   color: $text-color;
   margin: 0;
   padding: 0;
   font-size: 10px;
-  font-family: $helvetica;
+  font-family: $fontstack;
   overflow-x: hidden;
   overflow-y: auto;
+  position: fixed;
+  height: 100%;
+  width: 100%;
 }
 
+
+
+// ----------------------- header --------------------
 .back-head {
   background-color: $primary;
 
   .header {
-    height: 7vh;
+    height: auto;
   }
 }
 
@@ -47,14 +56,14 @@ html {
 
   .logo {
     flex: 1;
-    margin: auto;
+    // margin: auto;
     position: relative;
     right: 7px;
 
     .img-logo {
       position: relative;
-      top: .8rem;
-      width: 15.5%;
+      top: 1.5em;
+      width: auto;
     }
   }
 
@@ -64,25 +73,24 @@ html {
     .contact {
       color: $text-color;
       text-align: right;
-      position: relative;
-      top: 5px;
       font-size: 2.3rem;
       font-weight: bold;
     }
   }
 }
+// ------------end header-----------------
 
 .jumbo {
   background-image: url('samanage-header-background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  height: 60.1vh;
+  height: auto;
   margin: 0;
   padding: 0;
 
   .overlay {
     background-color: $overlay;
-    height: 50%;
+    height: auto;
     text-align: center;
     position: relative;
     top: 12%;
@@ -145,6 +153,8 @@ html {
   left: 1.2%;
 }
 
+// SAMANAGE CUSTOMER BANNER -------------
+
 .d-clogos {
   background-color: $custshade;
   width: 100%;
@@ -154,9 +164,11 @@ html {
 
 .clogos {
   width: 67%;
-  height: 10vh;
-  margin-bottom: .9rem;
+  height: auto;
+  margin: auto;
 }
+
+//END --------------------------------
 
 .content {
   color: #000;
@@ -177,29 +189,29 @@ html {
 }
 
 .feat-container {
-  display: inline-grid;
+  display: inline-block;
   vertical-align: top;
   position: relative;
-  left: .5rem;
+  left: 0.5rem;
   bottom: 1rem;
-}
 
-.feat-content {
-  display: inline-grid;
-  vertical-align: top;
-}
+  .feat-content {
+    display: inline-grid;
+    vertical-align: top;
 
-.feat-title {
-  font-size: 3.1rem;
-  display: inline-flex;
-  color: black;
-  position: relative;
+    .feat-title {
+      font-size: 3.1rem;
+      display: inline-flex;
+      color: black;
+      position: relative;
+    }
+  }
 }
 
 .feat-blurb-div {
   position: relative;
-  left: .22rem;
-  bottom: .5rem;
+  left: 0.22rem;
+  bottom: 0.5rem;
 
   .feat-blurb {
     font-size: 1.35rem;
@@ -208,7 +220,7 @@ html {
 }
 
 .left-div-ul {
-  padding-right: 8rem;
+  padding-right: 8rem; //spacing between ul's
 }
 
 .feat-blurb,
@@ -227,10 +239,9 @@ html {
 .quote-div {
   background-image: url('samanage-accordian-form-bg.png');
   background-size: cover;
-  height: 33vh;
+  height: 33%;
   width: 100%;
   text-align: center;
-
 
   .h2-quote {
     margin: auto;
@@ -246,7 +257,7 @@ html {
   }
 
   .a-demo-btn {
-    color: initial;
+    color: #000;
   }
 }
 
@@ -254,15 +265,13 @@ html {
   position: relative;
   left: 3.1rem;
   top: 0.6rem;
-  height: 90%;
+  height: auto;
 }
-
-// defines ul spacing
 
 .li-style {
   padding-bottom: 1.95rem;
 
-  &::before {
+  &::before { // initial sprite positioning
     content: ' ';
     background: url('samanage-bullet-icons.png');
     position: absolute;
@@ -271,9 +280,7 @@ html {
     margin: 0 -4rem;
   }
 }
-
-
-// -- Begin left unordered list ---------
+// -- Begin left ul sprite positioning ------------------
 
 .incident::before {
   background: url('samanage-bullet-icons.png') 25px -221px;
@@ -294,8 +301,7 @@ html {
 .knowledge::before {
   background: url('samanage-bullet-icons.png') 0 -178px;
 }
-
-//--- Begin right unordered list -------
+//--- Begin right ul sprite positioning -------------------
 
 .email::before {
   background: url('samanage-bullet-icons.png') 0 -221px;
@@ -323,7 +329,7 @@ html {
 
 .dash-ports,
 .knowledge {
-  padding-bottom: 0;
+  padding-bottom: 0; // resets padding for lowest li elements
 }
 
 .butn-demo-2 {
@@ -332,7 +338,7 @@ html {
   margin: auto;
   font-size: 1.4rem;
   font-weight: bold;
-  font-family: $helvetica;
+  font-family: $fontstack;
   padding: 1.5rem;
   position: relative;
   top: 27%;
@@ -351,6 +357,7 @@ html {
   .g-plus,
   .linkedin,
   .twitter {
+    // styles for image sprites for social media links
     background-image: url('samanage-social-share.png');
     background-repeat: no-repeat;
     display: inline-block;
@@ -358,7 +365,7 @@ html {
     height: 54px;
     margin: auto 2em;
   }
-
+  // --- social media sprite positioning ----------------------------
   .twitter {
     background: url('samanage-social-share.png') -56px;
   }
@@ -379,10 +386,11 @@ html {
     background: url('samanage-social-share.png') -280px;
   }
 }
+// begin footer ----------------------------------------
 
 .foot {
   background-color: #f2f2f2;
-  height: 11vh;
+  height: auto;
   width: 100%;
   text-align: center;
   color: black;
@@ -395,6 +403,171 @@ html {
     a {
       text-decoration: none;
       color: black;
+    }
+  }
+}
+
+/* media queries ---------------------------
+  *tested on latest builds of:
+  *  chrome
+  *  moz
+  *  ie
+  *  edge
+  *  opera
+*/
+
+//-------------VIEWPORT BETWEEN 1199PX & 1066PX ----------------------
+@media screen and (max-width: 1199px) and (min-width: 1067px) {
+  .content {
+    text-align: center;
+  }
+
+  .div-uls {
+    text-align: left;
+  }
+
+  .butn-demo-1,
+  .butn-demo-2,
+  .butn-trial {
+    width: auto;
+    padding: 1em;
+  }
+
+  .img-logo,
+  .overlay {
+    height: auto;
+  }
+
+  .left-ul,
+  .right-ul {
+    padding-left: 4em;
+  }
+
+  .butn-demo-2 {
+    width: 30%;
+  }
+
+  .clogos {
+    width: 85%;
+  }
+
+  .butn-demo-1,
+  .butn-trial {
+    width: 20%;
+  }
+}
+// --------------VIEWPORT BETWEEN 662PX & 1066 PX ----------------
+@media screen and (max-width: 1066px) and (min-width: 662px) {
+  .butn-demo-1,
+  .butn-trial {
+    width: auto;
+  }
+
+  .overlay {
+    width: auto;
+  }
+
+  .d-clogos {
+    display: none;
+  }
+  @media screen and (max-width: 984px) {
+    .butn-demo-2 {
+      width: 25%;
+    }
+  }
+  @media screen and (max-width: 729px) {
+    .tagline {
+      display: none;
+    }
+  }
+}
+// -------------VIEWPORT BETWEEN 661PX & 1PX (unbroken until ~320px)---
+@media screen and (max-width: 661px) {
+  .slogan {
+    font-size: 4em;
+    line-height: 100%;
+    position: inherit;
+  }
+
+  .row {
+    .logo {
+      .img-logo {
+        width: auto;
+      }
+    }
+  }
+
+  .logo {
+    flex: 0;
+  }
+
+  .butn-demo-1,
+  .butn-trial {
+    display: inline-block;
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: 6px;
+    width: auto;
+  }
+
+  .jumbo {
+    height: auto;
+  }
+
+  .feat-content,
+  .row {
+    text-align: center;
+  }
+
+  .feat-blurb-div {
+    display: none;
+  }
+
+  .left-ul {
+    padding: .6em;
+  }
+
+  .butn-demo-2 {
+    width: 90%;
+  }
+
+  .quote-div {
+    .h2-quote {
+      font-size: 3em;
+      top: 10%;
+    }
+  }
+
+  .social-share {
+    .email-ss,
+    .fb,
+    .g-plus,
+    .linkedin,
+    .twitter {
+      margin: 0;
+    }
+
+    .blogger {
+      display: none;
+    }
+  }
+
+  .d-clogos,
+  .d-con,
+  .h4-tag,
+  .tagline {
+    display: none;
+  }
+
+  @media screen and (max-width: 479px) {
+    .left-div-ul {
+      padding-right: 3em;
+    }
+
+    @media screen and (max-width: 432px) {
+      .right-div-ul {
+        display: none;
+      }
     }
   }
 }
